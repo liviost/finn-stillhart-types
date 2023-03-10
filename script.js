@@ -64,6 +64,7 @@ const BACKGROUND_COLORS = [
     fontColor: "#000000"
   },
 ];
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 let textContainer = document.getElementById("text-container");
 let selectedType = {};
@@ -119,24 +120,40 @@ window.addEventListener("hashchange", function () {
   document.querySelector(`a[href='${window.location.hash}']`).classList.add("selected");
 });
 
-document.addEventListener("click", function (event) {
-  document.getElementById("text-input").focus();
-});
 
-document.addEventListener("keydown", function (event) {
-  if ((event.key.length === 1 && event.key.match(selectedType.regex)) || event.key === " " || event.key === "Enter") {
-    text.push(event.key);
+
+if (isMobile) {
+  document.addEventListener("click", function (event) {
+    document.getElementById("text-input").focus();
+  });
+
+  document.getElementById("text-input").addEventListener("input", function (event) {
+    sanitizedText = document.getElementById("text-input").value.match(new RegExp(selectedType.regex.source+ '|\\s', 'g'));
+    document.getElementById("text-input").value = sanitizedText.join("");
+    text = sanitizedText;
     draw();
-  }
-  if (event.key === "Backspace") {
-    text.pop();
-    draw();
-  }
-});
+  });
+} else {
+  document.addEventListener("keydown", function (event) {
+    if ((event.key.length === 1 && event.key.match(selectedType.regex)) || event.key === " " || event.key === "Enter") {
+      text.push(event.key);
+      draw();
+    }
+    if (event.key === "Backspace") {
+      text.pop();
+      draw();
+    }
+  });
+}
 
 function draw() {
   textContainer.innerHTML = "";
-  const lines = text.join("").split("Enter");
+  let lines = [];
+  if(isMobile) {
+    lines = text.join("").split("\n");
+  } else {
+    lines = text.join("").split("Enter");
+  }
   lines.forEach(line => {
     let lineContainer = textContainer.appendChild(document.createElement("div"));
     lineContainer.classList.add("line");
