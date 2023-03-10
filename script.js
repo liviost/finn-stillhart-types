@@ -93,6 +93,7 @@ function fillColorMenu() {
     colorBtn = colorMenu.appendChild(document.createElement("button"));
     colorBtn.style.backgroundColor = bc.colorCode;
     colorBtn.addEventListener("click", function () {
+      console.log(1);
       document.querySelector('body').style.backgroundColor = bc.colorCode;
       document.querySelector('body').style.color = bc.fontColor;
       document.querySelectorAll('button').forEach(btn => btn.style.borderColor = bc.fontColor);
@@ -124,7 +125,8 @@ window.addEventListener("hashchange", function () {
 
 
 if (isMobile) {
-  document.addEventListener("click", function (event) {
+  document.getElementById("text-container").addEventListener("click", function (event) {
+    console.log(event)
     document.getElementById("text-input").focus();
   });
 
