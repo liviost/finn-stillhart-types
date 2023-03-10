@@ -1,16 +1,5 @@
-/* @font-face {
-  font-family: neue-machina;
-  src: url("fonts/neue_machina/NeueMachina-Regular.otf") format("opentype");
-}
-
 @font-face {
-  font-family: neue-machina;
-  font-weight: bold;
-  src: url("fonts/neue_machina/NeueMachina-Ultrabold.otf") format("opentype");
-} */
-
-@font-face {
-  font-family: gt-walsheim;
+  font-family: 'GT Walsheim';
   src: url("fonts/GTWalsheim\ Medium.otf") format("opentype");
 }
 
@@ -30,7 +19,7 @@ body {
 }
 
 #menu > a {
-  font-family: 'gt-walsheim';
+  font-family: 'GT Walsheim', sans-serif;
   font-size: 2rem;
   font-weight: bold;
   height: 3rem;
