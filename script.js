@@ -119,6 +119,10 @@ window.addEventListener("hashchange", function () {
   document.querySelector(`a[href='${window.location.hash}']`).classList.add("selected");
 });
 
+document.addEventListener("click", function (event) {
+  document.getElementById("text-input").focus();
+});
+
 document.addEventListener("keydown", function (event) {
   if ((event.key.length === 1 && event.key.match(selectedType.regex)) || event.key === " " || event.key === "Enter") {
     text.push(event.key);

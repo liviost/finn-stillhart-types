@@ -9,6 +9,12 @@ body {
   margin: 0;
 }
 
+#text-input {
+  z-index: 2;
+  position: absolute;
+  top: -100px;
+}
+
 #menu {
   z-index: 1;
   position: sticky;
