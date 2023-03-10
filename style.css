@@ -16,7 +16,6 @@ body {
 }
 
 #text-input {
-  font-size: 32px;
   z-index: 2;
   position: absolute;
   top: -100px;
