@@ -1,0 +1,88 @@
+/* @font-face {
+  font-family: neue-machina;
+  src: url("fonts/neue_machina/NeueMachina-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: neue-machina;
+  font-weight: bold;
+  src: url("fonts/neue_machina/NeueMachina-Ultrabold.otf") format("opentype");
+} */
+
+@font-face {
+  font-family: gt-walsheim;
+  src: url("fonts/GTWalsheim\ Medium.otf") format("opentype");
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+#menu {
+  z-index: 1;
+  position: sticky;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 32px 0;
+}
+
+#menu > a {
+  font-family: 'gt-walsheim';
+  font-size: 2rem;
+  font-weight: bold;
+  height: 3rem;
+  text-decoration: none;
+  color: inherit;
+  transition: font-size 0.2s;
+}
+
+#menu > a:hover {
+  font-size: 3rem;
+}
+
+#menu > a.selected {
+  text-decoration: underline;
+}
+
+#text-container {
+  position: absolute;
+  bottom: 48px;
+  min-height: calc(100vh - (3rem + 112px));
+  padding: 0 64px;
+}
+
+#text-container .line {
+  min-height: 100px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#text-container .word {
+  margin-right: 64px;
+}
+
+#text-container .word > img {
+  height: 100px;
+}
+
+#color-menu {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 16px;
+}
+
+#color-menu button{
+  height: 32px;
+  width: 32px;
+  margin: 8px;
+  border: 1px solid;
+}
+
+#color-menu button:hover {
+  cursor: pointer;
+}
