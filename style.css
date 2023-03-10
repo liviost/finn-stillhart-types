@@ -3,13 +3,20 @@
   src: url("fonts/GTWalsheim\ Medium.otf") format("opentype");
 }
 
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   margin: 0;
 }
 
 #text-input {
+  font-size: 32px;
   z-index: 2;
   position: absolute;
   top: -100px;
@@ -45,7 +52,7 @@ body {
 #text-container {
   position: absolute;
   bottom: 48px;
-  min-height: calc(100vh - (3rem + 112px));
+  min-height: calc(100% - (3rem + 112px));
   padding: 0 64px;
 }
 
@@ -80,4 +87,15 @@ body {
 
 #color-menu button:hover {
   cursor: pointer;
+}
+
+@media (pointer:none), (pointer:coarse) {
+  #text-input:focus ~ #text-container {
+    bottom: calc(50% + 48px);
+    min-height: calc(50% - (3rem + 112px));
+  }
+
+  #text-input:focus ~ #color-menu {
+    bottom: calc(50%);
+  }
 }

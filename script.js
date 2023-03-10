@@ -115,6 +115,7 @@ function preloadImages() {
 
 window.addEventListener("hashchange", function () {
   selectedType = TYPES.find(t => t.name === window.location.hash.substring(1));
+  document.getElementById("text-input").value = "";
   text = [];
   document.querySelectorAll(".selected").forEach(el => el.classList.remove("selected"));
   document.querySelector(`a[href='${window.location.hash}']`).classList.add("selected");
@@ -128,7 +129,7 @@ if (isMobile) {
   });
 
   document.getElementById("text-input").addEventListener("input", function (event) {
-    sanitizedText = document.getElementById("text-input").value.match(new RegExp(selectedType.regex.source+ '|\\s', 'g'));
+    sanitizedText = document.getElementById("text-input").value.match(new RegExp(selectedType.regex.source + '|\\s', 'g')) || [''];
     document.getElementById("text-input").value = sanitizedText.join("");
     text = sanitizedText;
     draw();
@@ -149,7 +150,7 @@ if (isMobile) {
 function draw() {
   textContainer.innerHTML = "";
   let lines = [];
-  if(isMobile) {
+  if (isMobile) {
     lines = text.join("").split("\n");
   } else {
     lines = text.join("").split("Enter");
